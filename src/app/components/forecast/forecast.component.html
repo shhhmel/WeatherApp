@@ -1,0 +1,97 @@
+<div class="container mt-3" *ngIf="arraied">
+  <h5 class="text-muted mb-3">Forecast 16 days</h5>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        id="wind-tab"
+        data-toggle="tab"
+        href="#wind"
+        role="tab"
+        aria-controls="wind"
+        aria-expanded="true"
+        (click)="$event.preventDefault()">Wind</a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="temperature-tab"
+        data-toggle="tab"
+        href="#temperature"
+        role="tab"
+        aria-controls="temperature"
+        (click)="$event.preventDefault()">Temperature</a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="presure-tab"
+        data-toggle="tab"
+        href="#presure"
+        role="tab"
+        aria-controls="presure"
+        (click)="$event.preventDefault()">Presure</a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="humidity-tab"
+        data-toggle="tab"
+        href="#humidity"
+        role="tab"
+        aria-controls="humidity"
+        (click)="$event.preventDefault()">Humidity</a>
+    </li>
+  </ul>
+  <div class="tab-content bg-light text-gray-dark mb-5" id="myTabContent">
+    <div class="tab-pane fade show active p-3" id="wind" role="tabpanel" aria-labelledby="wind-tab">
+      <div>
+        <div style="display: block">
+          <canvas baseChart
+            [datasets]="windChartData"
+            [labels]="weatherChartDates"
+            [options]="barChartOptions"
+            [legend]=false
+            [chartType]="barChartType"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade p-3" id="temperature" role="tabpanel" aria-labelledby="temperature-tab">
+      <div>
+        <div style="display: block">
+          <canvas baseChart
+            [datasets]="temperatureChartData"
+            [labels]="weatherChartDates"
+            [options]="barChartOptions"
+            [legend]=false
+            [chartType]="barChartType"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade p-3" id="presure" role="tabpanel" aria-labelledby="presure-tab">
+      <div>
+          <div style="display: block">
+            <canvas baseChart
+              [datasets]="presureChartData"
+              [labels]="weatherChartDates"
+              [options]="barChartOptions"
+              [legend]=false
+              [chartType]="barChartType"></canvas>
+          </div>
+        </div>
+    </div>
+    <div class="tab-pane fade p-3" id="humidity" role="tabpanel" aria-labelledby="humidity-tab">
+      <div>
+          <div style="display: block">
+            <canvas baseChart
+              [datasets]="humidityChartData"
+              [labels]="weatherChartDates"
+              [options]="barChartOptions"
+              [legend]=false
+              [chartType]="barChartType"></canvas>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

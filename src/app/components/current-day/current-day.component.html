@@ -1,0 +1,18 @@
+<div class="container" *ngIf="downloaded">
+  <div class="current-date">
+    <p class="text-muted">{{ current.date | date:'EEEE, d MMMM' }}</p>
+  </div>
+  <div class="text-center">
+    <h3>{{ current.name }}, {{ current.country }}</h3>
+    <h1 class="display-2">{{ current.temp }} &#8451;</h1>
+    <span><i class="wi {{ iconCode }}"></i> {{ current.desc }}</span>
+  </div>
+</div>
+<div class="bg-dark text-white text-center py-2 my-4">
+  <ul class="list-inline mb-0">
+    <li class="list-inline-item mx-2"><strong>Pressure: </strong>{{ current.pressure }} mmHg</li>
+    <li class="list-inline-item mx-2"><strong>Humidity: </strong>{{ current.humidity }}%</li>
+    <li class="list-inline-item mx-2"><strong>Wind Speed: </strong>{{ current.windSpeed }} m/s</li>
+    <li class="list-inline-item mx-2"><strong>Clouds: </strong>{{ current.clouds }}%</li>
+  </ul>
+</div>
