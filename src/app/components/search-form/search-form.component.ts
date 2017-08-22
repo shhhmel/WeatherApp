@@ -22,7 +22,7 @@ export class SearchFormComponent implements OnInit {
 
   search(form) {
     if (form.valid) {
-      this.citySearchService.announceMission(form.value);
+      this.citySearchService.startCitySearch(form.value);
       form.reset();
     } else {
       this.isValid = false;

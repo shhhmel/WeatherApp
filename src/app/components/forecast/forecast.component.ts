@@ -36,7 +36,7 @@ export class ForecastComponent implements OnInit {
     private citySearcService: CitySearcService,
     private flashMessagesService: FlashMessagesService
   ) {
-    this.subscription = citySearcService.missionAnnounced$.subscribe(
+    this.subscription = citySearcService.citySearchStarted$.subscribe(
       value => {
         // If ZIP Code
         if ((/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(value.city))) {
@@ -45,8 +45,7 @@ export class ForecastComponent implements OnInit {
             this.arrayDatas();
           },
           error => {
-            console.log("ERROR");
-            this.flashMessagesService.show('⛔ There is no such ZIP code!', { cssClass: 'alert-danger text-center mb-3', timeout: 4000 });
+            this.flashMessagesService.show(error, { cssClass: 'alert-danger text-center mb-3', timeout: 4000 });
           })
         // If CIty
         } else {
@@ -55,8 +54,7 @@ export class ForecastComponent implements OnInit {
             this.arrayDatas();
           },
           error => {
-            console.log("ERROR");
-            this.flashMessagesService.show('⛔ There is no such city!', { cssClass: 'alert-danger text-center mb-3', timeout: 4000 });
+            this.flashMessagesService.show('⛔ There is no such city or ZIP code!', { cssClass: 'alert-danger text-center mb-3', timeout: 4000 });
           })
         }
       });

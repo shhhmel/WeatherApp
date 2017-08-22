@@ -36,15 +36,13 @@ export class CurrentDayComponent implements OnInit {
     private dataService: DataService,
     private citySearcService: CitySearcService
   ) {
-    this.subscription = citySearcService.missionAnnounced$.subscribe(
+    this.subscription = citySearcService.citySearchStarted$.subscribe(
       value => {
         if ((/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(value.city))) {
-          console.log('BY CODE');
           this.dataService.searchCityZIPcode(value).subscribe(current => {
             this.current = current;
           })
         } else {
-          console.log('BY NAME');
           this.dataService.searchCity(value).subscribe(current => {
             this.current = current;
           })

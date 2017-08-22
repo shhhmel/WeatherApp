@@ -5,14 +5,14 @@ import { Subject }    from 'rxjs/Subject';
 export class CitySearcService {
 
   // Observable string sources
-  private missionAnnouncedSource = new Subject<any>();
+  private citySearchStartedSource = new Subject<any>();
 
   // Observable string streams
-  missionAnnounced$ = this.missionAnnouncedSource.asObservable();
+  citySearchStarted$ = this.citySearchStartedSource.asObservable();
 
   // Service message commands
-  announceMission(mission: any) {
-    this.missionAnnouncedSource.next(mission);
+  startCitySearch(mission: any) {
+    this.citySearchStartedSource.next(mission);
   }
 
 }
