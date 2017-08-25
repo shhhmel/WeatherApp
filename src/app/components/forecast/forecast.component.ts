@@ -20,8 +20,8 @@ export class ForecastComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartType: string = 'bar';
-  public barChartLegend: boolean = false;
+  public barChartType = 'bar';
+  public barChartLegend = false;
 
   public data: Data;
   public weatherChartDates: number[] = [];
@@ -46,7 +46,7 @@ export class ForecastComponent implements OnInit {
           },
           error => {
             this.flashMessagesService.show(error, { cssClass: 'alert-danger text-center mb-3', timeout: 4000 });
-          })
+          });
         // If CIty
         } else {
           this.dataService.searchCityForecast(value).subscribe(data => {
@@ -55,7 +55,7 @@ export class ForecastComponent implements OnInit {
           },
           error => {
             this.flashMessagesService.show('⛔ There is no such city or ZIP code!', { cssClass: 'alert-danger text-center mb-3', timeout: 4000 });
-          })
+          });
         }
       });
   }
@@ -68,19 +68,19 @@ export class ForecastComponent implements OnInit {
   }
 
   arrayDatas() {
-    let data = this.wetherCharData;
+    const data = this.wetherCharData;
 
-    var weatherChartDatesClone = [];
-    var windChartDataClone = [
+    const weatherChartDatesClone = [];
+    const windChartDataClone = [
       { data: [] }
     ];
-    var temperatureChartDataClone = [
+    const temperatureChartDataClone = [
       { data: [] }
     ];
-    var presureChartDataClone = [
+    const presureChartDataClone = [
       { data: [] }
     ];
-    var humidityChartDataClone = [
+    const humidityChartDataClone = [
       { data: [] }
     ];
 

@@ -41,11 +41,11 @@ export class CurrentDayComponent implements OnInit {
         if ((/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(value.city))) {
           this.dataService.searchCityZIPcode(value).subscribe(current => {
             this.current = current;
-          })
+          });
         } else {
           this.dataService.searchCity(value).subscribe(current => {
             this.current = current;
-          })
+          });
         }
     });
   }
@@ -67,8 +67,8 @@ export class CurrentDayComponent implements OnInit {
   }
 
   setIcon() {
-    let icon = this.current.icon;
-    switch(icon) {
+    const icon = this.current.icon;
+    switch (icon) {
       case '01d':
         this.iconCode = 'wi-day-sunny';
         break;

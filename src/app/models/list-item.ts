@@ -1,5 +1,5 @@
 import { Temperature } from './temperature';
-import { Weather }  from './weather';
+import { Weather } from './weather';
 
 export interface ListItem {
     clouds: number;

@@ -13,12 +13,14 @@ export class DataService {
   private count = 16;
   private appID = '7fbec9e4ca51aa254b8e2d04bbb01e85';
   private URL: string;
+  private defaultURL: string;
 
   constructor(
     private http: Http
   ) {
     this.cityName = 'dnipropetrovsk';
-    this.URL = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${this.cityName}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
+    this.defaultURL = 'http://api.openweathermap.org/data/2.5/forecast/daily';
+    this.URL = `${this.defaultURL}?q=${this.cityName}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
   }
 
   searchCityForecast(form): Observable<Data> {
@@ -28,19 +30,19 @@ export class DataService {
 
   searchCityForecastZIP(form): Observable<Data> {
     this.ZIPcode = form.city;
-    this.URL = `http://api.openweathermap.org/data/2.5/forecast/daily?zip=${this.ZIPcode}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
+    this.URL = `${this.defaultURL}?zip=${this.ZIPcode}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
     return this.http.get(this.URL)
       .map(res => res.json());
   }
 
   searchCity(form): Observable<Current> {
     this.cityName = form.city;
-    this.URL = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${this.cityName}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
+    this.URL = `${this.defaultURL}?q=${this.cityName}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
     return this.http.get(this.URL)
     .map(res => {
-      let data = res.json()
+      const data = res.json();
 
-      let currentData: Current = {
+      const currentData: Current = {
         date: new Date(),
         name: '',
         country: '',
@@ -89,12 +91,12 @@ export class DataService {
 
   searchCityZIPcode(form): Observable<Current> {
     this.ZIPcode = form.city;
-    this.URL = `http://api.openweathermap.org/data/2.5/forecast/daily?zip=${this.ZIPcode}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
+    this.URL = `${this.defaultURL}?zip=${this.ZIPcode}&cnt=${this.count}&units=metric&APPID=${this.appID}`;
     return this.http.get(this.URL)
     .map(res => {
-      let data = res.json()
+      const data = res.json();
 
-      let currentData: Current = {
+      const currentData: Current = {
         date: new Date(),
         name: '',
         country: '',
@@ -183,7 +185,7 @@ export class DataService {
         }
       ],
       message: 0
-    }
+    };
   }
 
   // Get Data by name
@@ -195,9 +197,9 @@ export class DataService {
   getCurrentData(): Observable<Current> {
     return this.http.get(this.URL)
       .map(res => {
-        let data = res.json()
+        const data = res.json();
 
-        let currentData: Current = {
+        const currentData: Current = {
           date: new Date(),
           name: '',
           country: '',
